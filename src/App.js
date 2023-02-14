@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import axios from "axios";
+import Card from "./components/card/card";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [pokemon, setPokemon] = useState();
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      const pokemonGroup = [];
+
+      for (let i = 0; i < 21; i++) {
+        try {
+          let pokemonData = await axios.get(
+            `https://pokeapi.co/api/v2/pokemon/${i + 1}`
+          );
+          pokemonGroup.push({
+            name: pokemonData.data.name,
+            data: pokemonData.data,
+          });
+          console.log(pokemonGroup);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      setPokemon(pokemonGroup);
+    };
+
+    getPokemon();
+  }, []);
+
+  if (!pokemon) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row">
+        {pokemon.map((item) => (
+          <Card
+            pokemonName={item.name}
+            pokemonLink={item.data.url}
+            stats={item.data.stats}
+            imageSource={item.data.sprites.other.dream_world.front_default}
+            key={item.data.id}
+          />
+        ))}
+      </div>
     </div>
   );
 }
