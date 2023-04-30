@@ -1,11 +1,19 @@
-function card(props) {
+import "./card.scss";
+
+export default function card(props) {
   return (
-    <div className="col-4">
+    <div className="col-4 mb-4">
       <div className="card">
         <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
-          {console.log(props.imageSource)}
-          <img src={props.imageSource} width="60" height="60" />
+          <div className="image-wrapper">
+            <img
+              className="card-image"
+              src={props.imageSource}
+              width="60"
+              height="60"
+            />
+          </div>
           <h5 className="card-title">{props.pokemonName}</h5>
           {props.stats.map((stat, index) => (
             <p className="card-text" key={index}>
@@ -20,5 +28,3 @@ function card(props) {
     </div>
   );
 }
-
-export default card;

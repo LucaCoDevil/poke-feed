@@ -19,7 +19,6 @@ function App() {
             name: pokemonData.data.name,
             data: pokemonData.data,
           });
-          console.log(pokemonGroup);
         } catch (error) {
           console.log(error);
         }
@@ -33,7 +32,7 @@ function App() {
   if (!pokemon) return null;
 
   return (
-    <div className="container">
+    <div className="container my-5">
       <div className="row">
         {pokemon.map((item) => (
           <Card
