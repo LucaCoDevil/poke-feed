@@ -9,20 +9,35 @@
 
   .image-wrapper {
     position: relative;
+    margin-bottom: 30px;
+
+    .card-image {
+      position: relative;
+      z-index: 11;
+      display: block;
+      height: 250px;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+    }
   }
 
   .image-wrapper::after {
     content: "";
     position: absolute;
-    inset: 0;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 1;
     border-radius: 100%;
-    background: $global-color-white;
+    background: #ffffff;
+    box-shadow: 0 0 10px 2px #eeeeee;
   }
 
-  .card-image {
-    display: block;
-    width: 80%;
-    height: auto;
-    margin: 0 auto;
+  .card-body {
+    .card-title {
+      text-align: center;
+    }
   }
 }
