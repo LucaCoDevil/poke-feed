@@ -1,7 +1,8 @@
 import "./App.scss";
 import axios from "axios";
-import Card from "./components/card/card";
 import { useEffect, useState } from "react";
+import Card from "./components/card/card";
+import Navbar from "./components/navbar/navbar.jsx";
 
 function App() {
   const [pokemon, setPokemon] = useState();
@@ -32,17 +33,22 @@ function App() {
   if (!pokemon) return null;
 
   return (
-    <div className="container my-5">
-      <div className="row">
-        {pokemon.map((item) => (
-          <Card
-            pokemonName={item.name}
-            pokemonLink={item.data.url}
-            stats={item.data.stats}
-            imageSource={item.data.sprites.other.dream_world.front_default}
-            key={item.data.id}
-          />
-        ))}
+    <div className="body-wrapper">
+      <div className="container nav-background">
+        <Navbar />
+      </div>
+      <div className="container my-5">
+        <div className="row">
+          {pokemon.map((item) => (
+            <Card
+              pokemonName={item.name}
+              pokemonLink={item.data.url}
+              stats={item.data.stats}
+              imageSource={item.data.sprites.other.dream_world.front_default}
+              key={item.data.id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
