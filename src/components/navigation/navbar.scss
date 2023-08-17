@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.navigation-bar .nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  background-color: $global-color-white;
+
+  .menu-container {
+    .main-menu {
+      display: inline-flex;
+      list-style-type: none;
+      li {
+        padding: 5px 20px;
+      }
+    }
+    .login-container {
+      display: inline-block;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import "./App.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./components/card/card";
-import Navbar from "./components/navbar/navbar.jsx";
+import Navbar from "./components/navigation/navbar";
 
 function App() {
   const [pokemon, setPokemon] = useState();
@@ -34,9 +34,7 @@ function App() {
 
   return (
     <div className="body-wrapper">
-      <div className="container nav-background">
-        <Navbar />
-      </div>
+      <Navbar />
       <div className="container my-5">
         <div className="row">
           {pokemon.map((item) => (
